@@ -1,17 +1,16 @@
-#include "vector.h"
+#include "vector.hpp"
 #include <stdio.h>
 #include <iostream>
 
-using namespace std;
-
-vector::vector()
+template <typename T>
+Vector<T>::Vector()
 {
-	cout << "HELLO EVERYONE" << endl;
+	std::cout << "HELLO EVERYONE" << std::endl;
 }
 
 int main()
 {
-	vector();
+	Vector<int> a;
 
 	return 0;
 }
