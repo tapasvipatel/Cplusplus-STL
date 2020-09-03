@@ -1,0 +1,5 @@
+Optimizations
+
+Vector Container
+- add a pop functionality
+- reduce dimensionality of buffer length by 2 when elements in the buffer decrease
