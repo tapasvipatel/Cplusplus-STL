@@ -24,7 +24,7 @@ public:
 	T* rbegin();
 	T* rend();
 	int size();
-	int capacity();
+	int size_available();
 	bool empty();
 	T at(int index);
 	void push_back(T element);

@@ -15,42 +15,50 @@ Vector<T>::Vector()
 	my_rend = buffer+my_capacity-1;
 	my_back = my_rend-1;
 }
+
+// Function returns the beginning location in the buffer where elements can be added
 template <typename T>
 T* Vector<T>::front()
 {
 	return my_front;
 }
 
+// Function returns the last location in the buffer where the final element resides
 template <typename T>
 T* Vector<T>::back()
 {
 	return my_back;
 }
 
+// Function returns the start location of the buffer
 template <typename T>
 T* Vector<T>::rbegin()
 {
 	return my_rbegin;
 }
 
+// Function returns the end location of the bugger
 template <typename T>
 T* Vector<T>::rend()
 {
 	return my_rend;
 }
 
+// Function return the current size of the buffer (how many elements in the buffer)
 template <typename T>
 int Vector<T>::size()
 {
 	return current_size;
 }
 
+// Function returns how many total elements can be added into the current buffer
 template <typename T>
-int Vector<T>::capacity()
+int Vector<T>::size_available()
 {
-	return my_capacity;
+	return size_available;
 }
 
+// Function returns whether the buffer is empty or not
 template <typename T>
 bool Vector<T>::empty()
 {
@@ -62,12 +70,14 @@ bool Vector<T>::empty()
 	return false;
 }
 
+// Function returns element value at the given index location
 template <typename T>
 T Vector<T>::at(int index)
 {
 	return buffer[index+1];
 }
 
+// Function adds an element to the back of the buffer
 template <typename T>
 void Vector<T>::push_back(T element)
 {
@@ -81,6 +91,7 @@ void Vector<T>::push_back(T element)
 	current_size++;
 }
 
+// Function clears all elements in the buffer
 template <typename T>
 void Vector<T>::clear()
 {
@@ -93,6 +104,7 @@ void Vector<T>::clear()
 	current_index=1;
 }
 
+// Function doubles length of the buffer and copies previous elements from the old buffer into the new buffer
 template <typename T>
 void Vector<T>::extend()
 {
