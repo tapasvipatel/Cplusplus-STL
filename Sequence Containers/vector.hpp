@@ -26,7 +26,7 @@ public:
 	int size();
 	int capacity();
 	bool empty();
-	T* at(int index);
+	T at(int index);
 	void push_back(T element);
 	void clear();
 };

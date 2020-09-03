@@ -8,7 +8,7 @@ Vector<T>::Vector()
 	my_capacity = 4;
 	size_available = 2;
 	current_size = 0;
-	current_index = 0;
+	current_index = 1;
 	buffer = new T[my_capacity];
 	my_rbegin = buffer;
 	my_front = my_rbegin+1;
@@ -42,7 +42,7 @@ T* Vector<T>::rend()
 template <typename T>
 int Vector<T>::size()
 {
-	return size_available;
+	return current_size;
 }
 
 template <typename T>
@@ -63,9 +63,9 @@ bool Vector<T>::empty()
 }
 
 template <typename T>
-T* Vector<T>::at(int index)
+T Vector<T>::at(int index)
 {
-	return buffer[index];
+	return buffer[index+1];
 }
 
 template <typename T>
@@ -73,7 +73,7 @@ void Vector<T>::push_back(T element)
 {
 	if(buffer+current_index == my_rend)
 	{
-		// Need to extend array
+		extend();
 	}
 
 	buffer[current_index] = element;
@@ -84,13 +84,13 @@ void Vector<T>::push_back(T element)
 template <typename T>
 void Vector<T>::clear()
 {
-	for(unsigned int index = 0; index < current_size; index++)
+	for(int index = 0; index < current_size; index++)
 	{
 		buffer[index] = NULL;
 	}
 
 	current_size=0;
-	current_index=0;
+	current_index=1;
 }
 
 template <typename T>
@@ -100,7 +100,7 @@ void Vector<T>::extend()
 	size_available = size_available*2;
 	T* buffer_new = new T[my_capacity];
 
-	for(unsigned int index = 0; index < current_size; index++)
+	for(int index = 1; index < current_size+1; index++)
 	{
 		buffer_new[index] = buffer[index];
 	}
@@ -116,6 +116,18 @@ void Vector<T>::extend()
 int main()
 {
 	Vector<int> a;
+  
+    for (int i = 1; i <= 10; i++) 
+    {
+        a.push_back(i);
+    }
+
+    for (int i = 0; i < 10; i++) 
+    {
+        std::cout << a.at(i) << std::endl;
+    }
+
+    std::cout << a.capacity() << std::endl;
 
 	return 0;
 }
