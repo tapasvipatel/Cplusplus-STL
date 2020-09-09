@@ -5,28 +5,39 @@
 template <typename T>
 Forward_List<T>::Forward_List()
 {
-	;
+	head = NULL;
+	current_size = 0;
 }
 
 // Returns value of the first element in the list
 template <typename T>
 T Forward_List<T>::front()
 {
-	;
+	return head->value;
 }
 
 // Returns value of the last element in the list
 template <typename T>
 T Forward_List<T>::back()
 {
-	;
+	struct node<T>* temp = head;
+
+	while(temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	return temp->value;
 }
 
 // Add new element to the start of the list
 template <typename T>
 void Forward_List<T>::push_front(T element)
 {
-	;
+	struct node<T>* new_element = new struct node<T>();
+	new_element->value = element;
+	new_element->next = head;
+	head = new_element;
 }
 
 // Add new element to the end of the list
@@ -123,6 +134,13 @@ void Forward_List<T>::sort()
 // Remove all duplicate elements from the list
 template <typename T>
 void Forward_List<T>::unique()
+{
+	;
+}
+
+// Return element at certain index
+template <typename T>
+T Forward_List<T>::at(int index)
 {
 	;
 }

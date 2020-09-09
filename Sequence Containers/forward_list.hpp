@@ -13,6 +13,7 @@ class Forward_List
 {
 private:
 	struct node<T>* head;
+	int current_size;
 
 public:
 	Forward_List();
@@ -33,6 +34,7 @@ public:
 	int size();
 	void sort();
 	void unique();
+	T at(int index);
 	Forward_List<T>* merge(Forward_List<T>& secondList);
 };
 
