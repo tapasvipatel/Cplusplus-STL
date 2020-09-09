@@ -44,14 +44,26 @@ void Forward_List<T>::push_front(T element)
 template <typename T>
 void Forward_List<T>::push_back(T element)
 {
-	;
+	struct node<T>* new_element = new struct node<T>();
+	new_element->value = element;
+	new_element->next = NULL;
+	struct node<T>* temp = head;
+
+	while(temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	temp->next = new_element;
 }
 
 // Remove first element of the list
 template <typename T>
-void Forward_List<T>::push_front()
+void Forward_List<T>::pop_front()
 {
-	;
+	struct node<T>* temp = head;
+	head = head->next;
+	free(temp);
 }
 
 // Remove last element from the list

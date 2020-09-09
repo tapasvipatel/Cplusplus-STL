@@ -21,7 +21,7 @@ public:
 	T back();
 	void push_front(T element);
 	void push_back(T element);
-	void push_front();
+	void pop_front();
 	void pop_back();
 	struct node<T>* being();
 	struct node<T>* end();
