@@ -6,6 +6,7 @@ struct node
 {
 	T value;
 	struct node<T>* next;
+	struct node<T>* previous;
 };
 
 template <typename T>
