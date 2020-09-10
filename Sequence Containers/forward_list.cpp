@@ -70,43 +70,84 @@ void Forward_List<T>::pop_front()
 template <typename T>
 void Forward_List<T>::pop_back()
 {
-	;
-}
+	struct node<T>* curr = head;
+	struct node<T>* prev = NULL;
 
-// Return pointer to the start of the list
-template <typename T>
-struct node<T>* Forward_List<T>::being()
-{
-	;
-}
+	while(curr->next != NULL)
+	{
+		prev = curr;
+		curr = curr->next;
+	}
 
-// Return pointer to the end of the list
-template <typename T>
-struct node<T>* Forward_List<T>::end()
-{
-	;
+	if(prev == NULL)
+	{
+		head = prev;
+	}
+	else
+	{
+		prev->next = NULL;
+	}
+
+	free(curr);
 }
 
 // Return whether list is empty or not
 template <typename T>
 bool Forward_List<T>::empty()
 {
-	;
+	if(size == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
-// Insert a new element in the list before a specified position
+// Insert a new element in the list at a specific index
 template <typename T>
-void Forward_List<T>::insert(struct node<T>* position)
+void Forward_List<T>::insert(int index, T element)
+{
+	struct node<T>* curr = head;
+	struct node<T>* prev = NULL;
+	int temp_index = 0;
+	struct node<T>* new_element = new struct node<T>();
+	new_element->value = element;
+	new_element->next = NULL;
+
+	while(temp_index != index)
+	{
+		prev = curr;
+		curr = curr->next;
+		temp_index++;
+	}
+
+	if(prev == NULL)
+	{
+		head = new_element;
+	}
+	else
+	{
+		new_element->next = prev->next;
+		prev->next = new_element;
+	}
+}
+
+// Delete element at a specific index
+template <typename T>
+void Forward_List<T>::erase(int index, T element)
 {
 	;
 }
 
-// Delete element at a specific posiiton
+// Return element at certain index
 template <typename T>
-void Forward_List<T>::erase(struct node<T>* position)
+T Forward_List<T>::at(int index)
 {
 	;
 }
+
 
 // Remove all elements from the list which are equal to a given element
 template <typename T>
@@ -146,13 +187,6 @@ void Forward_List<T>::sort()
 // Remove all duplicate elements from the list
 template <typename T>
 void Forward_List<T>::unique()
-{
-	;
-}
-
-// Return element at certain index
-template <typename T>
-T Forward_List<T>::at(int index)
 {
 	;
 }

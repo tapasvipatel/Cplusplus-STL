@@ -26,15 +26,15 @@ public:
 	struct node<T>* being();
 	struct node<T>* end();
 	bool empty();
-	void insert(struct node<T>* position);
-	void erase(struct node<T>* position);
+	void insert(int index, T element);
+	void erase(int index, T element);
+	T at(int index);
 	void remove(T element);
 	void clear();
 	void reverse();
 	int size();
 	void sort();
 	void unique();
-	T at(int index);
 	Forward_List<T>* merge(Forward_List<T>& secondList);
 };
 
