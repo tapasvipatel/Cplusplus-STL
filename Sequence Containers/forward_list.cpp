@@ -49,12 +49,18 @@ void Forward_List<T>::push_back(T element)
 	new_element->next = NULL;
 	struct node<T>* temp = head;
 
-	while(temp->next != NULL)
+	if(temp == NULL)
 	{
-		temp = temp->next;
+		head = new_element;
 	}
-
-	temp->next = new_element;
+	else
+	{
+		while(temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		temp->next = new_element;
+	}
 }
 
 // Remove first element of the list
@@ -138,7 +144,27 @@ void Forward_List<T>::insert(int index, T element)
 template <typename T>
 void Forward_List<T>::erase(int index, T element)
 {
-	;
+	struct node<T>* curr = head;
+	struct node<T>* prev = NULL;
+	int temp_index = 0;
+
+	while(temp_index != index)
+	{
+		prev = curr;
+		curr = curr->next;
+		temp_index++;
+	}
+
+	if(prev == NULL)
+	{
+		head = NULL;
+	}
+	else
+	{
+		prev->next = curr->next;
+	}
+
+	free(curr);
 }
 
 // Return element at certain index
