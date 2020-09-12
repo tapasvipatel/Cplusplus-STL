@@ -5,7 +5,8 @@
 template <typename T>
 Queue<T>::Queue()
 {
-	;
+	current_size = 0;
+	head = NULL;
 }
 
 // Function returns whether queue is empty or not
