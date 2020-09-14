@@ -13,7 +13,14 @@ Queue<T>::Queue()
 template <typename T>
 bool Queue<T>::empty()
 {
-	;
+	if(current_size == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 // Returns size of the queue
